@@ -41,6 +41,12 @@ echo -e 'Work directory = '$SWIF_JOB_WORK_DIR
 experiment="${sbsconfig:0:3}"
 config="${sbsconfig:3}"
 
+if [ $sbsconfig == 'GENRP' ] #GEN replay
+then
+experiment=$sbsconfig
+config=0
+fi
+
 # Enabling module
 MODULES=/etc/profile.d/modules.sh 
 if [[ $(type -t module) != function && -r ${MODULES} ]]; then 
@@ -79,6 +85,11 @@ fi
 if [ $experiment == 'GEN' ] #GEN replay
 then
     analyzer -b -q 'replay_gen_mc.C+("'$inputfile'",'$config','$maxevents')'    
+fi
+
+if [ $experiment == 'GENRP' ] #GEN replay
+then
+    analyzer -b -q 'replay_genrp_mc.C+("'$inputfile'",'$maxevents')'    
 fi
 
 if [ $experiment == 'GEP' ] #GEP replay

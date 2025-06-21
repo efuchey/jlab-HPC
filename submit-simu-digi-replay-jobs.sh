@@ -114,6 +114,8 @@ elif [[ $sbsconfig == GMN11 ]]; then
 elif [[ ($sbsconfig == GMN14) || ($sbsconfig == GMN8) || ($sbsconfig == GMN9) || ($sbsconfig == GEN2) || ($sbsconfig == GEN3) || ($sbsconfig == GEN4) ]]; then
     gemconfig=8
     # GEP has only one SBS GEM config. However, each setting has a different DB file for digitization. To handle that without major change to the code we are using gemconfig flag.
+elif [[ $sbsconfig == GENRP ]]; then
+    gemconfig=0
 elif [[ $sbsconfig == GEP1 ]]; then
     gemconfig=-1
 elif [[ $sbsconfig == GEP2 ]]; then
@@ -121,7 +123,7 @@ elif [[ $sbsconfig == GEP2 ]]; then
 elif [[ $sbsconfig == GEP3 ]]; then
     gemconfig=-3        
 else
-    echo -e "Enter valid SBS config! Valid options: GMN4,GMN7,GMN11,GMN14,GMN8,GMN9,GEN2,GEN3,GEN4,GEP1,GEP2,GEP3"
+    echo -e "Enter valid SBS config! Valid options: GMN4,GMN7,GMN11,GMN14,GMN8,GMN9,GEN2,GEN3,GEN4,GENRP,GEP1,GEP2,GEP3"
     exit;
 fi
 

@@ -61,6 +61,8 @@ elif [[ $gemconfig -eq 10 ]]; then
     dbfile=$LIBSBSDIG/db/db_gmn_conf_10gemmodules_$sbsconfig.dat
 elif [[ $gemconfig -eq 12 ]]; then
     dbfile=$LIBSBSDIG/db/db_gmn_conf_12gemmodules_$sbsconfig.dat
+elif [[ $gemconfig -eq 0 ]]; then #GEN-RP
+    dbfile=$LIBSBSDIG/db/db_genrp_conf_dev.dat
 elif [[ $gemconfig -eq -1 ]]; then #GEP-1
     dbfile=$LIBSBSDIG/db/db_gep1_conf_single-analyzer.dat
 elif [[ $gemconfig -eq -2 ]]; then #GEP-2
@@ -71,7 +73,10 @@ else
     echo -e "[run-sbsdig.sh] ERROR!! Enter valid GEM config!"
     exit;
 fi
-if [[ $sbsconfig -eq GEN2 || $sbsconfig -eq GEN3 || $sbsconfig -eq GEN4 ]]; then
+
+if [[ $sbsconfig -eq GENRP ]]; then
+    dbfile=$LIBSBSDIG/db/db_genrp_conf_dev.dat
+elif [[ $sbsconfig -eq GEN2 || $sbsconfig -eq GEN3 || $sbsconfig -eq GEN4 ]]; then
     dbfile=$LIBSBSDIG/db/db_gen_conf_8gemmodules_$sbsconfig.dat
 fi
 
