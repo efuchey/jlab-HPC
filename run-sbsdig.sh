@@ -74,10 +74,12 @@ else
     exit;
 fi
 
+if [[ $sbsconfig == GEN2 || $sbsconfig == GEN3 || $sbsconfig == GEN4 ]]; then
+    dbfile=$LIBSBSDIG/db/db_gen_conf_8gemmodules_$sbsconfig.dat
+fi
+
 if [[ $sbsconfig -eq GENRP ]]; then
     dbfile=$LIBSBSDIG/db/db_genrp_conf_dev.dat
-elif [[ $sbsconfig -eq GEN2 || $sbsconfig -eq GEN3 || $sbsconfig -eq GEN4 ]]; then
-    dbfile=$LIBSBSDIG/db/db_gen_conf_8gemmodules_$sbsconfig.dat
 fi
 
 # creating input text file
